@@ -1,25 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { Message } from '@strict/api-interfaces';
+import React, { MouseEvent, ReactElement } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectMetalsStatePlatinum, selectMetalsStateGold, selectMetalsStateSilverNonMemo, selectMetalsStateCopperNonMemo } from './reducers';
+import { setPlatinum, SetPlatinumAction } from './actions/metals';
 
-export const App = () => {
-  const [m, setMessage] = useState<Message>({ message: '' });
-
-  useEffect(() => {
-    fetch('/api')
-      .then(r => r.json())
-      .then(setMessage);
-  }, []);
+export const App = (): ReactElement => {
+  const dispatch = useDispatch();
+  const platinum = useSelector(selectMetalsStatePlatinum);
+  const gold = useSelector(selectMetalsStateGold);
+  const silver = useSelector(selectMetalsStateSilverNonMemo);
+  const copper = useSelector(selectMetalsStateCopperNonMemo);
 
   return (
     <>
       <div style={{ textAlign: 'center' }}>
-        <h1>Welcome to strict!</h1>
-        <img
-          width="450"
-          src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png"
-        />
+        <h1>Welcome to React/Redux/Redux-Observable/TypeScript Strict Mode!</h1>
+        <div>platinum (memoized) {platinum}</div>
+        <div>gold (memoized) {gold}</div>
+        <div>silver (non-memoized) {silver}</div>
+        <div>copper (non-memoized) {copper}</div>
+        <button onClick={(event: MouseEvent<HTMLButtonElement>): SetPlatinumAction => dispatch(setPlatinum(11))}>
+          Set platinum to 11
+      </button>
       </div>
-      <div>{m.message}</div>
     </>
   );
 };
