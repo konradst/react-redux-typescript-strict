@@ -1,0 +1,24 @@
+{
+  "npmScope": "strict-functional-recommended",
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "strict-functional-recommended": {
+      "tags": []
+    },
+    "strict-functional-recommended-e2e": {
+      "tags": []
+    },
+    "api": {
+      "tags": []
+    },
+    "api-interfaces": {
+      "tags": []
+    }
+  }
+}
