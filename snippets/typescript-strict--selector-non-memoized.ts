@@ -1,0 +1,1 @@
+export const selectGold = (state: State) => state.metals.gold;

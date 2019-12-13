@@ -1,0 +1,6 @@
+import { setGold } from './actions/metals';
+import { useDispatch } from 'react-redux';
+// …
+const dispatch = useDispatch();
+// …
+<button onClick={() => dispatch(setGold(34))}></button>

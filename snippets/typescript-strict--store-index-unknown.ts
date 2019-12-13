@@ -1,0 +1,1 @@
+const store: Store<State> = createStore<State, Action<AppAction>, unknown, unknown>(reducer, initialState, applyMiddleware(logger));

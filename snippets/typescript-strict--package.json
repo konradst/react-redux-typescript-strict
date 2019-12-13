@@ -1,0 +1,9 @@
+    {
+        ...
+        "devDependencies": {
+            "typescript": "³.7.0",
+            "eslint": "⁶.7.0",
+            "@typescript-eslint/parser": "².10.0",
+            "@typescript-eslint/eslint-plugin": "².10.0"
+        }
+    }

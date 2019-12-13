@@ -1,0 +1,1 @@
+const store: Store<State> = createStore<State, Action<AppAction>, undefined, undefined>(reducer, initialState);
