@@ -1,4 +1,4 @@
-import { ActionTypes, Action } from '../actions/metals';
+import { MetalActionTypes, MetalAction } from '../actions/metals';
 
 // Define our State interface for the current reducer
 export interface State {
@@ -16,9 +16,9 @@ export const initialState: State = {
     copper: 40,
 }
 
-export const reducer = (state: State = initialState, action: Action): State => {
+export const reducer = (state: State = initialState, action: MetalAction): State => {
     switch (action.type) {
-        case ActionTypes.SET_PLATINUM:
+        case MetalActionTypes.SET_PLATINUM:
             return {
                 ...state,
                 platinum: action.payload.platinum

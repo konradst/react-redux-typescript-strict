@@ -1,13 +1,12 @@
 import { Observable } from 'rxjs';
-import { tap, mapTo } from 'rxjs/operators';
-import { ActionTypes as MetalsActionTypes, setPlatinumOk } from '../actions/metals';
-import { ofType, combineEpics } from 'redux-observable';
-import { Action } from 'redux';
+import { tap, switchMap } from 'rxjs/operators';
+import { MetalActionTypes, setPlatinumOk, SetPlatinumOkAction, SetPlatinumAction } from '../actions/metals';
+import { ofType, combineEpics, ActionsObservable } from 'redux-observable';
 
-export const setPlatinumEpic = (action$: Observable<Action>): Observable<Action> => action$.pipe(
-    ofType(MetalsActionTypes.SET_PLATINUM),
-    tap(x => console.warn('action', x)),
-    mapTo(setPlatinumOk())
+export const setPlatinumEpic = (action$: ActionsObservable<Pick<SetPlatinumAction, 'type'>>): Observable<SetPlatinumOkAction> => action$.pipe(
+    ofType<Pick<SetPlatinumAction, 'type'>, SetPlatinumAction>(MetalActionTypes.SET_PLATINUM),
+    tap(x => console.warn('platinum', x.payload.platinum)),
+    switchMap(() => [setPlatinumOk()])
 );
 
 export default combineEpics(

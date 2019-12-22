@@ -3,7 +3,7 @@
  * We're using Typescript's enum
  * Typescript understands enum better 
  */
-export enum ActionTypes {
+export enum MetalActionTypes {
     SET_PLATINUM = '[Main] SET_PLATINUM',
     SET_PLATINUM_OK = '[Main] SET_PLATINUM_OK'
 }
@@ -12,9 +12,9 @@ export enum ActionTypes {
  * Define return types of our actions 
  * Every action returns a type and a payload
  */
-export type SetPlatinumAction = { type: ActionTypes.SET_PLATINUM, payload: { platinum: number } }
+export interface SetPlatinumAction { type: MetalActionTypes.SET_PLATINUM, payload: { platinum: number } }
 
-export type SetPlatinumOkAction = { type: ActionTypes.SET_PLATINUM_OK }
+export interface SetPlatinumOkAction { type: MetalActionTypes.SET_PLATINUM_OK }
 
 /*
  * Define our actions creators
@@ -22,14 +22,14 @@ export type SetPlatinumOkAction = { type: ActionTypes.SET_PLATINUM_OK }
  */
 export function setPlatinum(platinum: number): SetPlatinumAction {
     return {
-        type: ActionTypes.SET_PLATINUM,
+        type: MetalActionTypes.SET_PLATINUM,
         payload: { platinum }
     }
 }
 
 export function setPlatinumOk(): SetPlatinumOkAction {
     return {
-        type: ActionTypes.SET_PLATINUM_OK
+        type: MetalActionTypes.SET_PLATINUM_OK
     }
 }
 
@@ -38,4 +38,4 @@ export function setPlatinumOk(): SetPlatinumOkAction {
  * It can be one of the types defining in our action/todos file
  * It will be useful to tell typescript about our types in our reducer
  */
-export type Action = SetPlatinumAction | SetPlatinumOkAction;
+export type MetalAction = SetPlatinumAction | SetPlatinumOkAction;

@@ -1,3 +1,3 @@
-import { Action as MetalsAction } from './metals';
+import { MetalAction } from './metals';
 
-export type AppAction = MetalsAction;
+export type AppAction = MetalAction;
